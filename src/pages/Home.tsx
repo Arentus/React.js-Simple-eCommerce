@@ -2,8 +2,8 @@ import React from "react";
 import { Button } from "react-bootstrap";
 export const Home = () => {
   return (
-    <div className="container   ">
-      <div className="row jumbotron">
+    <div className="container-fluid">
+      <div className="row hero gradient">
         <div className="col-md-6">
           <h1>Bienvenido a GlitchCommerce</h1>
           <Button>Explorar</Button>

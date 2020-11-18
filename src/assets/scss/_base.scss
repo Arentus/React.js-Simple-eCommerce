@@ -1,0 +1,14 @@
+// colors
+
+$brand: #185a9d;
+$contrast: #43cea2;
+
+/* make the customizations */
+$theme-colors: (
+  "primary": $brand,
+  "secondary": $contrast,
+  "info": tomato,
+  "danger": teal,
+);
+
+// breakpoints

@@ -1,9 +1,12 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 const Menu = () => {
+  const { t } = useTranslation();
+
   return (
     <Navbar bg="light" expand="md" className="mainNavbar">
       <div>
@@ -11,22 +14,23 @@ const Menu = () => {
           GlitchCommerce
         </Navbar.Brand>
       </div>
-      <Navbar.Toggle aria-cotrols="basic-navbar-nav" />
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav>
           <Nav.Link as={Link} to="/signup">
-            Registrarse
+            {t("Sign Up")}
           </Nav.Link>
           <Nav.Link as={Link} to="/signin">
-            Iniciar Sesion
+            {t("Sign In")}
           </Nav.Link>{" "}
         </Nav>
-
-        <Form inline>
-          <FormControl type="text" placeholder="Que quieres comprar?" />
-        </Form>
       </Navbar.Collapse>
+
+      <Form className="searchBar mt-1" inline>
+        <AiOutlineSearch className="mr-3" size={25} />
+        <FormControl type="text" placeholder={t("sPlaceholder")} />
+      </Form>
     </Navbar>
   );
 };

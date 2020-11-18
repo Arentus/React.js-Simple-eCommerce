@@ -1,0 +1,8 @@
+.hero {
+  @include media-breakpoint-up(xs) {
+    padding: 2em;
+  }
+  @include media-breakpoint-up(xl) {
+    padding: 5em;
+  }
+}
