@@ -11,6 +11,9 @@
 # production
 /build
 
+# vendor api laravel
+/api/dev/vendor
+
 # misc
 .DS_Store
 .env.local

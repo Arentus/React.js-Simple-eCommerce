@@ -27,7 +27,7 @@ export const SubNav = () => {
   };
 
   return (
-    <div className="subNav d-flex justify-content-between">
+    <div className="subNavbar">
       <div className="d-flex navItems">
         <Nav.Link as={Link} to="/signup">
           <AiFillQuestionCircle size={iconSize} />
@@ -35,7 +35,33 @@ export const SubNav = () => {
         </Nav.Link>
         <Navbar.Text>
           <AiFillMobile size={iconSize} />
-          <small> +58 424 361 72 35</small>
+          <small>
+            <a href="#"> Whatsapp</a>
+          </small>
+        </Navbar.Text>
+      </div>
+      <div className="subNavbar__categories">
+        <Navbar.Text>
+          <a href="#" className="subNavbar__category">
+            eBooks
+          </a>
+        </Navbar.Text>
+        <Navbar.Text>
+          <a href="#" className="subNavbar__category">
+            Electronics
+          </a>
+        </Navbar.Text>
+
+        <Navbar.Text>
+          <a href="#" className="subNavbar__category">
+            Specials
+          </a>
+        </Navbar.Text>
+
+        <Navbar.Text>
+          <a href="#" className="subNavbar__category">
+            Flash Sale
+          </a>
         </Navbar.Text>
       </div>
       <div className="navItems">

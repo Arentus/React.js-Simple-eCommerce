@@ -8,16 +8,17 @@ const Menu = () => {
   const { t } = useTranslation();
 
   return (
-    <Navbar bg="light" expand="md" className="mainNavbar">
-      <div>
-        <Navbar.Brand as={Link} to="/">
-          GlitchCommerce
-        </Navbar.Brand>
-      </div>
+    <Navbar bg="light" expand="md" className="navbar">
+      <Navbar.Brand as={Link} to="/">
+        GlitchCommerce
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav>
+      <Navbar.Collapse className="navbar__content" id="basic-navbar-nav">
+        <Form className="navbar__search" inline>
+          <FormControl type="text" placeholder={t("sPlaceholder")} />
+        </Form>
+        <Nav className="navbar__links">
           <Nav.Link as={Link} to="/signup">
             {t("Sign Up")}
           </Nav.Link>
@@ -26,11 +27,6 @@ const Menu = () => {
           </Nav.Link>{" "}
         </Nav>
       </Navbar.Collapse>
-
-      <Form className="searchBar mt-1" inline>
-        <AiOutlineSearch className="mr-3" size={25} />
-        <FormControl type="text" placeholder={t("sPlaceholder")} />
-      </Form>
     </Navbar>
   );
 };

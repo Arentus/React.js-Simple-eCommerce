@@ -8,8 +8,8 @@ import { SubNav } from "./components/Navbar/SubNav/SubNav";
 function App() {
   return (
     <Router>
-      <SubNav />
       <Navbar />
+      <SubNav />
       <Switch>
         {routes.map(({ path, component }) => (
           <Route exact={true} key={path} path={path} component={component} />
