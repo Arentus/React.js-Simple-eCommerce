@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 // Define Tymon\JWTAuth\Contracts\JWTSubject contract before the User model.
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
