@@ -12,9 +12,10 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
+    // we define default 'web' to 'api'. Laravel guard uses the session driver to protect the guards
+    // but in this case we change the default way because this is a RESTAPI
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -42,7 +43,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
         ],
