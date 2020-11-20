@@ -1,7 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
 
 const Menu = () => {

@@ -5,7 +5,6 @@ import {
   AiFillQuestionCircle,
   AiFillMobile,
   AiOutlineHeart,
-  AiOutlineShopping,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { useTranslation } from "react-i18next";

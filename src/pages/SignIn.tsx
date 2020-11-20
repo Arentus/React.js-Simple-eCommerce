@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
 export const SignIn = () => {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const api = process.env.REACT_APP_API_URL;
+  const handleChange = (prop: any) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setValues({ ...values, [prop]: e.target.value });
+  };
   const { t } = useTranslation();
 
+  const tryLogin = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    fetch(api + "/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="container mt-5">
       <div className="row">
@@ -17,7 +44,12 @@ export const SignIn = () => {
           <Form>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control
+                type="email"
+                value={values.email}
+                onChange={handleChange("email")}
+                placeholder="Enter email"
+              />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -25,13 +57,18 @@ export const SignIn = () => {
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                value={values.password}
+                onChange={handleChange("password")}
+                placeholder="Password"
+              />
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
+            <Button variant="primary" onClick={tryLogin} type="submit">
+              Sign In
             </Button>
           </Form>
         </div>
