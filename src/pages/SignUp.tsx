@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import draw1 from "../assets/img/d4.svg";
+import { useAuth } from "../context/useAuth";
 
 export const SignUp = () => {
   const [values, setValues] = useState({
@@ -10,7 +11,6 @@ export const SignUp = () => {
     password: "",
     password_confirmation: "",
   });
-  const api = process.env.REACT_APP_API_URL;
 
   const handleChange = (prop: any) => (
     e: React.ChangeEvent<HTMLInputElement>
@@ -18,22 +18,30 @@ export const SignUp = () => {
     setValues({ ...values, [prop]: e.target.value });
   };
 
+  const auth = useAuth();
   const tryRegister = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
-    fetch(api + "/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(values),
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    auth.register(values).then((res: any) => {
+      console.log(res);
+    });
+    // fetch(api + "/register", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    //   },
+    //   body: JSON.stringify(values),
+    // })
+    //   .then((res: any) => {
+    //     return res.json();
+    //   })
+    //   .then((res: any) => {
+    //     console.log(res);
+    //     // localStorage.setItem("token", res.access_token);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const { t } = useTranslation();
@@ -75,7 +83,7 @@ export const SignUp = () => {
                 placeholder="Password"
               />
             </Form.Group>
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId="formBasicPassword2">
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control
                 type="password"

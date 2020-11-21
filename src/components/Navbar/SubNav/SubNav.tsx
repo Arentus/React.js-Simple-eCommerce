@@ -35,30 +35,30 @@ export const SubNav = () => {
         <Navbar.Text>
           <AiFillMobile size={iconSize} />
           <small>
-            <a href="#"> Whatsapp</a>
+            <a href="/w"> Whatsapp</a>
           </small>
         </Navbar.Text>
       </div>
       <div className="subNavbar__categories">
         <Navbar.Text>
-          <a href="#" className="subNavbar__category">
+          <a href="/ebook" className="subNavbar__category">
             eBooks
           </a>
         </Navbar.Text>
         <Navbar.Text>
-          <a href="#" className="subNavbar__category">
+          <a href="/electronics" className="subNavbar__category">
             Electronics
           </a>
         </Navbar.Text>
 
         <Navbar.Text>
-          <a href="#" className="subNavbar__category">
+          <a href="/specials" className="subNavbar__category">
             Specials
           </a>
         </Navbar.Text>
 
         <Navbar.Text>
-          <a href="#" className="subNavbar__category">
+          <a href="/flash" className="subNavbar__category">
             Flash Sale
           </a>
         </Navbar.Text>

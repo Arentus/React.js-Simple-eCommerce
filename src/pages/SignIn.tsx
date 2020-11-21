@@ -1,36 +1,47 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../context/useAuth";
 
 export const SignIn = () => {
+  const { t } = useTranslation();
+
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-  const api = process.env.REACT_APP_API_URL;
+
+  const auth = useAuth();
+
   const handleChange = (prop: any) => (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setValues({ ...values, [prop]: e.target.value });
   };
-  const { t } = useTranslation();
 
   const tryLogin = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    auth.login(values).then((res: any) => {
+      console.log(res);
+    });
 
-    fetch(api + "/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(values),
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // fetch(api + "/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    //   },
+    //   body: JSON.stringify(values),
+    // })
+    //   .then((res: any) => {
+    //     return res.json();
+    //   })
+    //   .then((res: any) => {
+    //     console.log(res.access_token);
+    //     localStorage.setItem("token", res.access_token);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
   return (
     <div className="container mt-5">
