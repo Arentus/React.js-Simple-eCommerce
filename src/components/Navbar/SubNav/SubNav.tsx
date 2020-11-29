@@ -65,6 +65,9 @@ export const SubNav = () => {
       </div>
       <div className="navItems">
         <Nav.Link onClick={toggleLanguage}>{lang}</Nav.Link>
+        <Nav.Link as={Link} to="/user">
+          User
+        </Nav.Link>
         <Nav.Link as={Link} to="/wishlist">
           <AiOutlineHeart size={25} />
         </Nav.Link>

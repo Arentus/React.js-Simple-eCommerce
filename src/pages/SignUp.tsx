@@ -19,29 +19,13 @@ export const SignUp = () => {
   };
 
   const auth = useAuth();
+
   const tryRegister = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
     auth.register(values).then((res: any) => {
       console.log(res);
     });
-    // fetch(api + "/register", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    //   body: JSON.stringify(values),
-    // })
-    //   .then((res: any) => {
-    //     return res.json();
-    //   })
-    //   .then((res: any) => {
-    //     console.log(res);
-    //     // localStorage.setItem("token", res.access_token);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
 
   const { t } = useTranslation();

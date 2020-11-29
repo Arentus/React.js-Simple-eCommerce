@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/useAuth";
 
-export const SignIn = () => {
+export const SignIn = (props: any) => {
   const { t } = useTranslation();
 
   const [values, setValues] = useState({
@@ -23,26 +23,10 @@ export const SignIn = () => {
     e.preventDefault();
     auth.login(values).then((res: any) => {
       console.log(res);
+      props.history.push("/user");
     });
-
-    // fetch(api + "/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    //   body: JSON.stringify(values),
-    // })
-    //   .then((res: any) => {
-    //     return res.json();
-    //   })
-    //   .then((res: any) => {
-    //     console.log(res.access_token);
-    //     localStorage.setItem("token", res.access_token);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
+
   return (
     <div className="container mt-5">
       <div className="row">

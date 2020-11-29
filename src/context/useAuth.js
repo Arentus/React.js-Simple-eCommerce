@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 
 const api = process.env.REACT_APP_API_URL;
 
@@ -15,7 +15,38 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    if (!user) {
+      checkAuth().then((res) => setLoading(false));
+    }
+  }, [user]);
+
+  const checkAuth = async () => {
+    // no token provided or user already checked prevents to make unwanted requests
+    if (!localStorage.getItem("token") || user !== null) {
+      return;
+    }
+
+    return await fetch(api + "/user-profile", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setUser(res);
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
+  // login
   const login = async (data) => {
     return await fetch(api + "/login", {
       method: "POST",
@@ -28,7 +59,6 @@ function useProvideAuth() {
       .then((res) => {
         localStorage.setItem("token", res.access_token);
         setUser(res.user);
-        return res.user;
       })
       .catch((err) => {
         console.log(err);
@@ -36,6 +66,7 @@ function useProvideAuth() {
       });
   };
 
+  // register
   const register = async (data) => {
     return await fetch(api + "/register", {
       method: "POST",
@@ -47,6 +78,8 @@ function useProvideAuth() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        window.location("/login");
+
         // localStorage.setItem("token", res.access_token);
       })
       .catch((err) => {
@@ -54,19 +87,20 @@ function useProvideAuth() {
       });
   };
 
-  const signout = () => {
+  // logout
+  const logout = () => {
     if (user) {
       localStorage.removeItem("token");
-      window.location("/");
-      setUser(false);
+      setUser(null);
     }
     return;
   };
 
   return {
     user,
+    loading,
     login,
     register,
-    signout,
+    logout,
   };
 }
