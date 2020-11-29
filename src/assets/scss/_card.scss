@@ -1,10 +1,12 @@
 .card {
   border-radius: 0px;
-  border: 2px solid rgb(34, 34, 34);
-  padding: 0.5rem;
-
+  border: none;
+  background: whitesmoke;
+  color: black;
+  transition: all 0.1s ease-in-out;
   &:hover {
     cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     .card__button {
       visibility: visible;
       height: auto;

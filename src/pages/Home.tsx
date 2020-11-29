@@ -81,13 +81,14 @@ export const Home = () => {
       <div className="container">
         <Splide
           options={{
-            perPage: 5,
+            perPage: 4,
             breakpoints: {
               800: {
                 perPage: 2,
               },
             },
-            gap: ".5rem",
+            height: 380,
+            gap: ".9rem",
             pagination: false,
             hasAutoplayProgress: true,
           }}
@@ -95,7 +96,7 @@ export const Home = () => {
         >
           {products.map((product) => (
             <SplideSlide>
-              <Card>
+              <Card className="">
                 <Card.Img
                   variant="top"
                   src="https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png"
@@ -104,6 +105,7 @@ export const Home = () => {
                   <Card.Title className="card__title">
                     {product.title}
                   </Card.Title>
+                  <p>$ 9.99 USD</p>
                   <Button className="card__button btn" size="sm">
                     Add to cart
                   </Button>
@@ -112,6 +114,12 @@ export const Home = () => {
             </SplideSlide>
           ))}
         </Splide>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, error
+          dolores cupiditate necessitatibus nisi magni. Voluptas, nesciunt
+          dolorum corrupti fugiat saepe, rerum illum magnam quos ut dolore
+          perspiciatis modi deleniti.
+        </p>
       </div>
     </div>
   );

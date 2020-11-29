@@ -1,20 +1,24 @@
 // gradients
 
-@mixin gradient($color, $contrast) {
+@mixin gradient($direction, $color, $contrast) {
   background: $color; /* fallback for old browsers */
   background: -webkit-linear-gradient(
-    to right,
+    $direction,
     $color,
     $contrast
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
-    to right,
+    $direction,
     $color,
     $contrast
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .gradient {
-  @include gradient($contrast, $brand);
+  @include gradient(to right, $contrast, $brand);
   color: white;
+}
+
+.gradient__card {
+  @include gradient(45deg, $contrast, $brand);
 }
