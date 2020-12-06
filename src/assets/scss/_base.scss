@@ -12,3 +12,13 @@ $theme-colors: (
 );
 
 // breakpoints
+
+// generic
+
+.image__container {
+  margin: 10px 0px;
+  .image__preview {
+    min-width: 250px;
+    height: 200px;
+  }
+}

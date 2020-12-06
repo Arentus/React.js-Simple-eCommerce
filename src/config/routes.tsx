@@ -1,4 +1,6 @@
+import { Admin } from "../pages/admin/Admin";
 import { Cart } from "../pages/Cart";
+import { AddProduct } from "../pages/products/AddProduct";
 import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
 import { User } from "../pages/User";
@@ -22,6 +24,15 @@ export const privateRoutes = {
   cart: {
     path: "/cart",
     component: Cart,
+  },
+  admin: {
+    path: "/admin",
+    component: Admin,
+  },
+
+  adminAddProduct: {
+    path: "/admin/add/product",
+    component: AddProduct,
   },
 };
 

@@ -25,6 +25,9 @@ const Menu = () => {
         <Nav className="navbar__links">
           {user ? (
             <>
+              <Nav.Link as={Link} to="/admin/add/product">
+                Agregar Producto
+              </Nav.Link>
               <Nav.Link as={Link} to="/user">
                 {user.email}
               </Nav.Link>{" "}

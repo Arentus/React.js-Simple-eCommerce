@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
 import Spinner from "react-bootstrap/Spinner";
-export const PrivateRoute = ({ component: Component, path }) => {
+export const PrivateRoute = ({ component: Component, path, exact }) => {
   const { user, loading } = useAuth();
   return (
     <Route

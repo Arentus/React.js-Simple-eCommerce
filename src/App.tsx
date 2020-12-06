@@ -18,11 +18,11 @@ function App() {
           <Route exact path="/" component={Home} />
 
           {Object.values(routes).map(({ path, component }) => (
-            <Route key={path} path={path} component={component} />
+            <Route key={path} exact path={path} component={component} />
           ))}
 
           {Object.values(privateRoutes).map(({ path, component }) => (
-            <PrivateRoute key={path} path={path} component={component} />
+            <PrivateRoute key={path} exact path={path} component={component} />
           ))}
 
           <Route component={NotFound} />
